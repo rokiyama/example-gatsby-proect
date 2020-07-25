@@ -2,12 +2,21 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image";
 import Layout from "../components/layout";
+import { css } from "@emotion/core"
 
 export default function Home({ data }) {
   return (
     <Layout>
       <section className="hero">
-        <figure>
+        <figure
+          css={css`
+            max-height: 100%;
+            height: 450px;
+            @media (min-width: 768px) {
+		          height: 750px;
+            }
+          `}
+        >
           <Img
             fluid={data.hero.childImageSharp.fluid}
             alt=""

@@ -100,11 +100,6 @@ svg {
 	position: relative;
 }
 
-.hero figure {
-	max-height: 100%;
-	height: 450px;
-}
-
 .hero figure img {
 	width: 100%;
 	height: 450px;
@@ -144,9 +139,6 @@ svg {
 }
 
 @media (min-width: 768px) {
-	.hero figure {
-		height: 750px;
-	}
 	.hero figure img {
 		height: 750px;
 	}
