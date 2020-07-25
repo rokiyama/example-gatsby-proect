@@ -11,8 +11,8 @@ export default () => (
       </div>
       <nav className="nav">
         <ul>
-          <li><Link href={"/"}>TOP</Link></li>
-          <li><Link href={"/about/"}>ABOUT</Link></li>
+          <li><Link to={"/"}>TOP</Link></li>
+          <li><Link to={"/about/"}>ABOUT</Link></li>
         </ul>
       </nav>
     </div>
