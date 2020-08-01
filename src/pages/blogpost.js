@@ -2,9 +2,21 @@ import React from "react";
 import Img from "gatsby-image";
 import Layout from "../components/layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock, faFolderOpen, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faFolderOpen, faChevronLeft, faChevronRight, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
 import { graphql } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { BLOCKS } from "@contentful/rich-text-types";
+
+const contentRenderOptions = {
+  renderNode: {
+    [BLOCKS.HEADING_2]: (node, children) => (
+      <h2>
+        <FontAwesomeIcon icon={faCheckSquare} />
+        {children}
+      </h2>
+    )
+  }
+}
 
 export default ({ data }) => (
   <Layout>
@@ -57,7 +69,7 @@ export default ({ data }) => (
             </div>
           </aside>
           <div className="postbody">
-            {documentToReactComponents(data.contentfulBlogPost.content.json)}
+            {documentToReactComponents(data.contentfulBlogPost.content.json, contentRenderOptions)}
           </div>
           <ul className="postlink">
             <li className="prev">
