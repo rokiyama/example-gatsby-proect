@@ -14,6 +14,14 @@ const contentRenderOptions = {
         <FontAwesomeIcon icon={faCheckSquare} />
         {children}
       </h2>
+    ),
+    [BLOCKS.EMBEDDED_ASSET]: node => (
+      <img
+        src={node.data.target.fields.file["ja-JP"].url}
+        alt={node.data.target.fields.description
+          ? node.data.target.fields.description["ja-JP"]
+          : node.data.target.fields.title["ja-JP"]}
+      />
     )
   }
 }
@@ -21,28 +29,6 @@ const contentRenderOptions = {
 export default ({ data }) => (
   <Layout>
     <div>
-      <meta charSet="UTF-8" />
-      <meta name="viewport" content="width=device-width" />
-      <title>ESSENTIALS</title>
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossOrigin="anonymous" />
-      <link rel="stylesheet" href="style.css" />
-      <link rel="icon" href="images/icon.png" type="image/png" />
-      <header className="header">
-        <div className="container">
-          <div className="site">
-            <a href="base-index.html">
-              <img src="images/logo.svg" alt="ESSENTIALS" />
-            </a>
-          </div>
-          <nav className="nav">
-            <ul>
-              <li><a href="base-index.html">TOP</a></li>
-              <li><a href="base-about.html">ABOUT</a></li>
-              <li><a href="base-blog.html">BLOG</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
       <div className="eyecatch">
         <figure>
           <Img
