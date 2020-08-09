@@ -6,6 +6,7 @@ import { faClock, faFolderOpen, faChevronLeft, faChevronRight, faCheckSquare } f
 import { graphql } from "gatsby";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS } from "@contentful/rich-text-types";
+import useContentfulImage from "../utils/useContentfulImage";
 
 const contentRenderOptions = {
   renderNode: {
@@ -16,8 +17,8 @@ const contentRenderOptions = {
       </h2>
     ),
     [BLOCKS.EMBEDDED_ASSET]: node => (
-      <img
-        src={node.data.target.fields.file["ja-JP"].url}
+      <Img
+        fluid={useContentfulImage(node.data.target.fields.file["ja-JP"].url)}
         alt={node.data.target.fields.description
           ? node.data.target.fields.description["ja-JP"]
           : node.data.target.fields.title["ja-JP"]}
