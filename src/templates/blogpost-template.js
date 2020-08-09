@@ -34,56 +34,54 @@ const contentRenderOptions = {
 
 export default ({ data, pageContext }) => (
   <Layout>
-    <div>
-      <div className="eyecatch">
-        <figure>
-          <Img
-            fluid={data.contentfulBlogPost.eyecatch.fluid}
-            alt={data.contentfulBlogPost.eyecatch.description}
-          />
-        </figure>
-      </div>
-      <article className="content">
-        <div className="container">
-          <h1 className="bar">{data.contentfulBlogPost.title}</h1>
-          <aside className="info">
-            <time dateTime={data.contentfulBlogPost.publishDate}>
-              <FontAwesomeIcon icon={faClock} />
-              {data.contentfulBlogPost.publishDateJP}
-            </time>
-            <div className="cat">
-              <FontAwesomeIcon icon={faFolderOpen} />
-              <ul>
-                {data.contentfulBlogPost.category.map(cat => (
-                  <li className={cat.categorySlug} key={cat.id}>{cat.category}</li>
-                ))}
-              </ul>
-            </div>
-          </aside>
-          <div className="postbody">
-            {documentToReactComponents(data.contentfulBlogPost.content.json, contentRenderOptions)}
-          </div>
-          <ul className="postlink">
-            {pageContext.previous && (
-              <li className="prev">
-                <Link to={`/blog/post/${pageContext.previous.slug}/`} rel="prev">
-                  <FontAwesomeIcon icon={faChevronLeft} />
-                  <span>{pageContext.previous.title}</span>
-                </Link>
-              </li>
-            )}
-            {pageContext.next && (
-              <li className="next">
-                <Link to={`/blog/post/${pageContext.next.slug}/`} rel="next">
-                  <span>{pageContext.next.title}</span>
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </Link>
-              </li>
-            )}
-          </ul>
-        </div>
-      </article>
+    <div className="eyecatch">
+      <figure>
+        <Img
+          fluid={data.contentfulBlogPost.eyecatch.fluid}
+          alt={data.contentfulBlogPost.eyecatch.description}
+        />
+      </figure>
     </div>
+    <article className="content">
+      <div className="container">
+        <h1 className="bar">{data.contentfulBlogPost.title}</h1>
+        <aside className="info">
+          <time dateTime={data.contentfulBlogPost.publishDate}>
+            <FontAwesomeIcon icon={faClock} />
+            {data.contentfulBlogPost.publishDateJP}
+          </time>
+          <div className="cat">
+            <FontAwesomeIcon icon={faFolderOpen} />
+            <ul>
+              {data.contentfulBlogPost.category.map(cat => (
+                <li className={cat.categorySlug} key={cat.id}>{cat.category}</li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+        <div className="postbody">
+          {documentToReactComponents(data.contentfulBlogPost.content.json, contentRenderOptions)}
+        </div>
+        <ul className="postlink">
+          {pageContext.previous && (
+            <li className="prev">
+              <Link to={`/blog/post/${pageContext.previous.slug}/`} rel="prev">
+                <FontAwesomeIcon icon={faChevronLeft} />
+                <span>{pageContext.previous.title}</span>
+              </Link>
+            </li>
+          )}
+          {pageContext.next && (
+            <li className="next">
+              <Link to={`/blog/post/${pageContext.next.slug}/`} rel="next">
+                <span>{pageContext.next.title}</span>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </Link>
+            </li>
+          )}
+        </ul>
+      </div>
+    </article>
   </Layout>
 )
 
