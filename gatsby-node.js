@@ -11,22 +11,34 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             slug
           }
+          next {
+            title
+            slug
+          }
+          previous {
+            title
+            slug
+          }
         }
       }
     }
   `)
+
+
 
   if (blogresult.errors) {
     reporter.panicOnBuild(`GraphQL のクエリでエラーが発生しました`)
     return
   }
 
-  blogresult.data.allContentfulBlogPost.edges.forEach(({ node }) => {
+  blogresult.data.allContentfulBlogPost.edges.forEach(({ node, next, previous }) => {
     createPage({
       path: `/blog/post/${node.slug}`,
       component: path.resolve(`./src/templates/blogpost-template.js`),
       context: {
-        id: node.id
+        id: node.id,
+        next,
+        previous,
       },
     })
   })
